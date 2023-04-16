@@ -11,7 +11,7 @@ using TodoApp.ViewModel;
 
 namespace TodoApp.Controllers
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     [RoutePrefix("api/TaskAPI")]
     public class TaskAPIController : ApiController
     {
@@ -125,9 +125,22 @@ namespace TodoApp.Controllers
 
                 if(update_task_list != null)
                 {
-                    update_task_list.taskTitle = frombody.taskTitle;
-                    update_task_list.taskDescription = frombody.taskDescription;
-                    update_task_list.taskStatus = frombody.taskStatus;
+                    if(frombody.taskTitle != null)
+                    {
+                        update_task_list.taskTitle = frombody.taskTitle;
+                    }
+
+                    if(frombody.taskDescription != null)
+                    {
+                        update_task_list.taskDescription = frombody.taskDescription;
+                    }
+                    
+                    if(frombody.taskStatus !=null)
+                    {
+
+                         update_task_list.taskStatus = frombody.taskStatus;
+                    }
+                   
                     update_task_list.modifiedDate = DateTime.Now;
                     db.SaveChanges();
                 }

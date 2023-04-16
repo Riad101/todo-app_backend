@@ -12,8 +12,8 @@ namespace TodoApp
         {
             // Web API configuration and services
             // Enable CORS
-            //var cors = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors(cors);
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             // Web API routes
             config.MapHttpAttributeRoutes();
 
